@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.demoqa.FirstJUnitTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-04-01T17:35:43" hostname="USER-ПК" time="0.064">
+  <properties/>
+  <testcase name="SecondTest()" classname="com.demoqa.FirstJUnitTest" time="0.059"/>
+  <testcase name="FirstTest()" classname="com.demoqa.FirstJUnitTest" time="0.003"/>
+  <system-out><![CDATA[    ###@BeforeAll
+    ###@BeforeEach!
+    ###@SecondTest!
+    ###@AfterEach!
+    ###@BeforeEach!
+    ###@FirstTest!
+    ###@AfterEach!
+    ###@AfterAll
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
