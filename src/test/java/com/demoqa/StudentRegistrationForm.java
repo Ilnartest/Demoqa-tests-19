@@ -1,15 +1,11 @@
 package com.demoqa;
 
-import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-
 
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-
 
 public class StudentRegistrationForm extends TestBase {
     @Test
