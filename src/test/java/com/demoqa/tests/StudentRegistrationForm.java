@@ -1,5 +1,6 @@
-package com.demoqa;
+package com.demoqa.tests;
 
+import com.demoqa.pages.RegistrationPage;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.appear;
@@ -8,8 +9,9 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class StudentRegistrationForm extends TestBase {
+
     @Test
-    void successfulFillFormTest() {
+     void successfulFillFormTest() {
         open("/automation-practice-form");
         executeJavaScript ("$('#fixedban').remove()");
         executeJavaScript ("$ ('footer').remove ()");
@@ -17,7 +19,7 @@ public class StudentRegistrationForm extends TestBase {
         $("#firstName").setValue("Ilnar");
         $("#lastName").setValue("Kadyyrov");
         $("#userEmail").setValue("kadyyr@ya.ru");
-        $("#genterWrapper").$(byText("Male")).click();;
+        $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("8900999999");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__year-select").selectOptionByValue("1987");
