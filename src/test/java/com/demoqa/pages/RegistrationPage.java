@@ -18,18 +18,18 @@ public class RegistrationPage {
           firstNameInput = $("#firstName"),
           lastNameInput = $("#lastName"),
           userEmailInput = $("#userEmail"),
-          gender = $("#genterWrapper"),
-          userNumber = $("#userNumber"),
+          genterWrapper = $("#genterWrapper"),
+          userNumberInput = $("#userNumber"),
           dateOfBirthInput = $("#dateOfBirthInput"),
-          hobbies = $("#hobbiesWrapper"),
+          subjectsInput = $("#subjectsInput"),
+          hobbiesWrapper = $("#hobbiesWrapper"),
           hobbiesCheckbox = $("#hobbies-checkbox-1"),
-          picture = $("#uploadPicture"),
+          uploadPicture = $("#uploadPicture"),
           currentAddress = $("#currentAddress"),
-          state = $("#state"),
-          stateCity = $("#stateCity-wrapper"),
-          city = $("#city"),
-          stateCity1 = $("#stateCity-wrapper"),
-          submit = $("#submit");
+          stateInput = $("#state"),
+          cityInput = $("#city"),
+          stateAndCity = $("#stateCity-wrapper"),
+          submitButton = $("#submit");
 
   public RegistrationPage setFirstName(String value) {
     firstNameInput.setValue(value);
@@ -39,11 +39,16 @@ public class RegistrationPage {
   public RegistrationPage openPage() {
     open("/automation-practice-form");
     formHeaderText.shouldHave(text("Student Registration Form"));
-    executeJavaScript("$('#fixedban').remove()");
-    executeJavaScript("$ ('footer').remove ()");
 
     return this;
   }
+  public RegistrationPage removeBanner() {
+    executeJavaScript("$('#fixedban').remove()");
+    executeJavaScript("$('footer').remove()");
+
+    return this;
+  }
+
   public RegistrationPage setLastName(String value) {
     lastNameInput.setValue(value);
 
@@ -55,13 +60,13 @@ public class RegistrationPage {
     return this;
   }
   public RegistrationPage setGender(String value) {
-    gender.$(byText(value)).click();
+    genterWrapper.$(byText(value)).click();
 
     return this;
   }
 
   public RegistrationPage setUserNumber(String value) {
-    userNumber.setValue(value);
+    userNumberInput.setValue(value);
 
     return this;
   }
@@ -72,9 +77,13 @@ public class RegistrationPage {
 
     return this;
   }
+  public RegistrationPage setSubjects (String value) {
+    subjectsInput.setValue(value).pressEnter();
 
-  public RegistrationPage setHobbies(String value) {
-    hobbies.$(byText(value)).click();
+    return this;
+  }
+  public RegistrationPage setHobbies (String value) {
+    hobbiesWrapper.$(byText(value)).click();
 
     return this;
   }
@@ -86,7 +95,7 @@ public class RegistrationPage {
   }
 
   public RegistrationPage setPicture(String picturePath) {
-    picture.uploadFromClasspath(picturePath);
+    uploadPicture.uploadFromClasspath(picturePath);
 
     return this;
   }
@@ -97,28 +106,21 @@ public class RegistrationPage {
     return this;
   }
 
-  public RegistrationPage setState() {
-    state.click();
-    return this;
-  }
-
-  public RegistrationPage setStateCity(String value) {
-    stateCity.$(byText(value)).click();
+  public RegistrationPage setState(String value) {
+    stateInput.click();
+    stateAndCity.$(byText(value)).click();
 
     return this;
   }
-  public RegistrationPage setCity() {
-    city.click();
+
+  public RegistrationPage setCity(String value) {
+    cityInput.click();
+    stateAndCity.$(byText(value)).click();
 
     return this;
   }
-  public RegistrationPage setStateCity1(String value) {
-    stateCity1.$(byText(value)).click();
-
-    return this;
-  }
-  public RegistrationPage setSubmit() {
-    submit.click();
+  public RegistrationPage clickSubmit() {
+    submitButton.click();
 
     return this;
   }
