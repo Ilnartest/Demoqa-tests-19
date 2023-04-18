@@ -13,7 +13,7 @@ public class StudentRegistrationFormWithPageObjects extends TestBase {
                         .setUserEmail("kadyyr@ya.ru")
                         .setGender("Male")
                         .setUserNumber("8900999999")
-                        .setBirthDate("14","6","1987")
+                        .setBirthDate("14","July","1987")
                         .setSubjects("Math")
                         .setHobbies("Sports")
                         .setPicture("image.jpg")
