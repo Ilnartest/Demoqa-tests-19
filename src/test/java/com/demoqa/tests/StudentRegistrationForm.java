@@ -23,7 +23,8 @@ public class StudentRegistrationForm extends TestBase {
         $("#userNumber").setValue("8900999999");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__year-select").selectOptionByValue("1987");
-        $(".react-datepicker__month-select").selectOptionByValue("6");
+       // $(".react-datepicker__month-select").selectOptionByValue("6");
+        $(".react-datepicker__month-select").selectOption("July");
         $(".react-datepicker__day--014").click();
         $("#hobbiesWrapper").$(byText("Sports")).click();
         $("#hobbies-checkbox-1").parent().click();

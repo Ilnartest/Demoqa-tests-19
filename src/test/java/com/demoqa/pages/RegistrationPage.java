@@ -4,6 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import com.demoqa.pages.components.CalendarComponent;
 import com.demoqa.pages.components.ResultsModal;
 
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -36,12 +37,14 @@ public class RegistrationPage {
 
     return this;
   }
+
   public RegistrationPage openPage() {
     open("/automation-practice-form");
     formHeaderText.shouldHave(text("Student Registration Form"));
 
     return this;
   }
+
   public RegistrationPage removeBanner() {
     executeJavaScript("$('#fixedban').remove()");
     executeJavaScript("$('footer').remove()");
@@ -54,11 +57,13 @@ public class RegistrationPage {
 
     return this;
   }
+
   public RegistrationPage setUserEmail(String value) {
     userEmailInput.setValue(value);
 
     return this;
   }
+
   public RegistrationPage setGender(String value) {
     genterWrapper.$(byText(value)).click();
 
@@ -77,12 +82,14 @@ public class RegistrationPage {
 
     return this;
   }
-  public RegistrationPage setSubjects (String value) {
+
+  public RegistrationPage setSubjects(String value) {
     subjectsInput.setValue(value).pressEnter();
 
     return this;
   }
-  public RegistrationPage setHobbies (String value) {
+
+  public RegistrationPage setHobbies(String value) {
     hobbiesWrapper.$(byText(value)).click();
 
     return this;
@@ -119,19 +126,23 @@ public class RegistrationPage {
 
     return this;
   }
+
   public RegistrationPage clickSubmit() {
     submitButton.click();
 
     return this;
   }
+
   public RegistrationPage verifyRegistrationResultsModalAppears() {
     resultsModal.verifyModalAppears();
 
     return this;
   }
+
   public RegistrationPage verifyResult(String key, String value) {
     resultsModal.verifyResult(key, value);
 
     return this;
   }
+
 }
