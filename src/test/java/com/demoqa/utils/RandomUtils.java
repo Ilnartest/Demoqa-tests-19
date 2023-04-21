@@ -1,20 +1,39 @@
-package com.demoqa.pages.utils;
+package com.demoqa.utils;
+
+import com.demoqa.enums.StatesEnums;
+import com.demoqa.enums.cities.CitiesHaryanaEnums;
+import com.demoqa.enums.cities.CitiesNCREnums;
+import com.demoqa.enums.cities.CitiesRajasthanEnums;
+import com.demoqa.enums.cities.CitiesUttarPradeshEnums;
 
 import java.security.SecureRandom;
-import java.util.HashMap;
+import java.util.Arrays;
+
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+import static com.demoqa.enums.HobbiesEnums.randomHobbiesEnums;
+import static com.demoqa.enums.MonthsEnums.randomMonthsEnums;
+import static com.demoqa.enums.StatesEnums.*;
+import static com.demoqa.enums.SubjectEnums.randomSubjectEnums;
+import static com.demoqa.enums.cities.CitiesHaryanaEnums.getRandomCitiesHaryana;
+import static com.demoqa.enums.cities.CitiesNCREnums.getRandomCitiesNCR;
+import static com.demoqa.enums.cities.CitiesRajasthanEnums.getRandomCitiesRajasthan;
+import static com.demoqa.enums.cities.CitiesUttarPradeshEnums.getRandomCitiesUttarPradesh;
+import static com.demoqa.tests.TestData.state;
+
+
 public class RandomUtils {
-    static  String[] genders = {"Male", "Female", "Other"};
-    static   String[] subject = {"Hindi", "English", "Maths", "Physics", "Chemistry", "Biology",
+    static String[] genders = {"Male", "Female", "Other"};
+    static String[] subject = {"Hindi", "English", "Maths", "Physics", "Chemistry", "Biology",
             "Computer Science", "Commerce", "Accounting", "Economics", "Arts",
             "Social Studies", "History", "Civics"};
-    static   String[] hobbies = {"Sports", "Reading", "Music"};
-    static    String[] states = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
+    static String[] hobbies = {"Sports", "Reading", "Music"};
+    static String[] states = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
     static String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September",
             "October", "November", "December"};
 
-   /* public static void main(String[] args) {
+    public static void main(String[] args) {
         System.out.println(generateString(10));
         System.out.println(getRandomEmail());
         System.out.println(getRandomInt(11111111, 99999999));
@@ -23,16 +42,13 @@ public class RandomUtils {
         System.out.println(getRandomMonth());
         System.out.println(getRandomYear());
         System.out.println(getRandomDay());
-    } */
-    private static final HashMap<String, String[]> statesAndCities = new HashMap<>();
-    static {
-        statesAndCities.put(states[0], new String[]{"Delhi", "Gurgaon", "Noida"});
-        statesAndCities.put(states[1], new String[]{"Agra", "Lucknow", "Merrut"});
-        statesAndCities.put(states[2], new String[]{"Karnal", "Panipat"});
-        statesAndCities.put(states[3], new String[]{"Jaipur", "Jaiselmer"});
+        System.out.println(randomSubjectEnums());
+        System.out.println(randomHobbiesEnums());
+        System.out.println(randomMonthsEnums());
+        System.out.println(randomStatesEnums());
     }
 
-    private static String stateUtil;
+
     private static <T> T getRandomValueFromArray(T[] array) {
         return array[ThreadLocalRandom.current().nextInt(0, array.length - 1)];
     }
@@ -47,6 +63,7 @@ public class RandomUtils {
             sb.append(AB.charAt(rnd.nextInt(AB.length())));
 
         return sb.toString();
+
     }
 
     public static String getRandomEmail() {
@@ -72,7 +89,7 @@ public class RandomUtils {
 
     public static String getRandomGender() {
 
-        return getRandomItemFromArray(genders);
+       return getRandomItemFromArray(genders);
 
     }
     public static String getRandomMonth() {
@@ -99,15 +116,24 @@ public class RandomUtils {
     public static String getRandomHobbies() {
 
         return getRandomItemFromArray(hobbies);
-    }
 
-    public static  String getRandomState() {
-        stateUtil = getRandomValueFromArray(states);
-        return stateUtil;
     }
-
     public static String getRandomCity() {
-        String[] cities = statesAndCities.get(stateUtil);
-        return getRandomValueFromArray(cities);
+        switch (state) {
+            case "NCR": {
+                return  String.valueOf(getRandomCitiesNCR());
+            }
+           case "Uttar Pradesh": {
+                return String.valueOf(getRandomCitiesUttarPradesh());
+            }
+            case "Haryana": {
+                return String.valueOf(getRandomCitiesHaryana());
+            }
+            case "Rajasthan": {
+                return String.valueOf(getRandomCitiesRajasthan());
+            }
+        }
+        return null;
     }
+
 }
