@@ -8,8 +8,8 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
-import static com.demoqa.pages.utils.RandomUtils.*;
-import static com.demoqa.pages.utils.RandomUtils.getRandomGender;
+import static com.demoqa.utils.RandomUtils.getRandomGender;
+
 
 public class StudentRegistrationFormWithFaker extends TestBase {
     @Test
