@@ -3,13 +3,22 @@ package com.demoqa.enums.cities;
 import java.util.Random;
 
 public enum CitiesHaryanaEnums {
-    Karnal,
-    Panipat;
-    private static final Random r = new Random();
-    public static CitiesHaryanaEnums getRandomCitiesHaryana() {
+    KARNAL("Karnal"), PANIPAT("Panipat");
+    private String name;
+    CitiesHaryanaEnums (String name) {
 
+        this.name = name;
+    }
+    public String getName() {
+
+        return name;
+
+    }
+
+    public static String getRandomCitiesHaryana() {
+        Random r = new Random();
         CitiesHaryanaEnums[] citiesHaryanaEnums = values();
-        return citiesHaryanaEnums[r.nextInt(citiesHaryanaEnums.length)];
+        return citiesHaryanaEnums[r.nextInt(citiesHaryanaEnums.length)].getName();
     }
 }
 

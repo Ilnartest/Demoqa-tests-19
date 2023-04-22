@@ -3,13 +3,22 @@ package com.demoqa.enums;
 import java.util.Random;
 
 public enum MonthsEnums {
-    January, February, March, April, May, June, July, August, September,
-    October, November,December;
+    JANUARY("January"), FEBRUARY("February"), MARCH("March"), APRIL("April"), MAY("May"),
+    JUNE("June"), JULY("July"), AUGUST("August"), SEPTEMBER("September"), OCTOBER("October"), NOVEMBER("November"), DECEMBER("December");
+    private String name;
+    MonthsEnums (String name) {
 
-    private static final Random r = new Random();
-    public static MonthsEnums randomMonthsEnums()  {
+        this.name = name;
+    }
+    public String getName() {
+
+        return name;
+
+    }
+    public static String randomMonthsEnums()  {
+        Random r = new Random();
         MonthsEnums[] monthsEnums = values();
 
-        return monthsEnums[r.nextInt(monthsEnums.length)];
+        return monthsEnums[r.nextInt(monthsEnums.length)].getName() ;
     }
 }

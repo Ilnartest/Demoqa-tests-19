@@ -5,13 +5,15 @@ public enum StatesEnums {
 
     private String name;
     StatesEnums(String name) {
+
         this.name = name;
     }
     public String getName() {
+
         return name;
     }
     public static String randomStatesEnums() {
-        final Random r = new Random();
+        Random r = new Random();
         StatesEnums[] statesEnums = values();
         return statesEnums[r.nextInt(statesEnums.length)].getName();
     }
