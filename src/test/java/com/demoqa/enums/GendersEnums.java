@@ -3,15 +3,22 @@ package com.demoqa.enums;
 import java.util.Random;
 
 public enum GendersEnums {
-   Male, Female, Other;
+    MALE("Male"), FEMALE("Female"), OTHER("Other");
 
-    private static final Random r = new Random();
-    public static GendersEnums randomGendersEnums()  {
+    private String name;
+    GendersEnums (String name) {
+
+        this.name = name;
+    }
+    public String getName() {
+
+        return name;
+
+    }
+    public static String randomGendersEnums()  {
+        Random r = new Random();
         GendersEnums[] gendersEnums = values();
 
-        return gendersEnums[r.nextInt(gendersEnums.length)];
+        return gendersEnums[r.nextInt(gendersEnums.length)].getName();
     }
-
-
-
 }

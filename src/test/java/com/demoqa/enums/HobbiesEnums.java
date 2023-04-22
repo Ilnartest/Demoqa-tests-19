@@ -4,12 +4,21 @@ import java.util.Random;
 
 public enum HobbiesEnums {
 
-   Sports, Reading, Music;
+    SPORTS("Sports"), READING("Reading"), MUSIC("Music");
+    private String name;
+    HobbiesEnums (String name) {
 
-    private static final Random r = new Random();
-    public static HobbiesEnums randomHobbiesEnums()  {
+        this.name = name;
+    }
+    public String getName() {
+
+        return name;
+
+    }
+    public static String randomHobbiesEnums()  {
+        Random r = new Random();
         HobbiesEnums[] hobbiesEnums = values();
 
-        return hobbiesEnums[r.nextInt(hobbiesEnums.length)];
+        return hobbiesEnums[r.nextInt(hobbiesEnums.length)].getName();
     }
 }
