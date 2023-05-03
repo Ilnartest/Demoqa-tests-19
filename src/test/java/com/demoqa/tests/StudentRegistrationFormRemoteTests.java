@@ -1,19 +1,24 @@
 package com.demoqa.tests;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.demoqa.tests.TestData.*;
+import static io.qameta.allure.Allure.step;
 
 public class StudentRegistrationFormRemoteTests extends RemoteTestBase {
 
     @Test
     @Tag("remote")
+    @DisplayName("Successful registration")
     void successfulFillFormTest() {
-
+    step("Open form", () -> {
     registrationPage.openPage()
-                    .removeBanner()
-                    .setFirstName(firstName)
+                    .removeBanner();
+    });
+    step("Fill form", () -> {
+    registrationPage.setFirstName(firstName)
                     .setLastName(lastName)
                     .setUserEmail(userEmail)
                     .setGender(gender)
@@ -25,9 +30,10 @@ public class StudentRegistrationFormRemoteTests extends RemoteTestBase {
                     .setCurrentAddress(currentAddress)
                     .setState(state)
                     .setCity(city)
-                    .clickSubmit()
-
-                .verifyRegistrationResultsModalAppears()
+                    .clickSubmit();
+    });
+    step("Verify results", () -> {
+    registrationPage.verifyRegistrationResultsModalAppears()
                 .verifyResult("Student Name", firstName+" "+lastName)
                 .verifyResult("Student Email", userEmail)
                 .verifyResult("Gender", gender)
@@ -38,7 +44,7 @@ public class StudentRegistrationFormRemoteTests extends RemoteTestBase {
                 .verifyResult("Picture", picture)
                 .verifyResult("Address", currentAddress)
                 .verifyResult("State and City",state);
-
+    });
     }
 }
 
