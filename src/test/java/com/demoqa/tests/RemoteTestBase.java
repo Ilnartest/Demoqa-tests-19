@@ -14,19 +14,24 @@ import java.util.Map;
 
 public class RemoteTestBase {
     RegistrationPage registrationPage =new RegistrationPage();
-    @BeforeAll
-    static void BeforeAll() {
-        Configuration.baseUrl= "https://demoqa.com";
-        Configuration.browserSize= "1920x1080";
 
-    Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-    DesiredCapabilities capabilities = new DesiredCapabilities();
-    capabilities.setCapability("selenoid:options", Map .<String, Object>of(
-                "enableVNC", true,
-                        "enableVideo", true
-    ));
-    Configuration.browserCapabilities = capabilities;
-}
+    @BeforeAll
+        static void configForDemoQa() {
+            Configuration.browser = System.getProperty("browser", "chrome");
+            Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
+            Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
+            Configuration.browserVersion = System.getProperty("browserVersion", "100.0");
+            Configuration.browserPosition = "0x0";
+            Configuration.pageLoadStrategy = "eager";
+
+            Configuration.remote = System.getProperty("remote", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                    "enableVNC", true,
+                    "enableVideo", true
+            ));
+            Configuration.browserCapabilities = capabilities;
+        }
     @BeforeEach
     void addListener() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
