@@ -9,8 +9,10 @@ public class TestBase {
     RegistrationPage registrationPage =new RegistrationPage();
 
     @BeforeAll
-    static void BeforeAll() {
-        Configuration.baseUrl= "https://demoqa.com";
-        Configuration.browserSize= "1920x1080";
+    static void configForDemoQa() {
+        Configuration.baseUrl = "https://demoqa.com";
+        Configuration.browserSize = "1920x1080";
+        Configuration.browserPosition = "0x0";
+        Configuration.pageLoadStrategy = "eager";
     }
 }
